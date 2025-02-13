@@ -56,68 +56,21 @@ public class DesertScene : MonoBehaviour
     void CreatePyramid()
     {
         GameObject pyramidParent = new GameObject("Pyramid");
-        // First level
-        Color color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        for (int row = 0; row < 5; row++)
+        for(int i = 4; i >= 0; i--)
         {
-            for(int col = 0; col < 5; col++)
-            { 
-                GameObject stone = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                stone.transform.parent = pyramidParent.transform;
-                stone.transform.position = new Vector3(col, 0.45f, row);
-                stone.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                stone.GetComponent<Renderer>().material.color = color;
-            }
-            
-        }
-        color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        // Second level
-        for (int row = 0; row < 4; row++)
-        {
-            for (int col = 0; col < 4; col++)
+            Color color = Random.ColorHSV(0f, 1f, 1f, 1f, 0f, 1f);
+            for (int row = 0; row < i + 1; row++)
             {
-                GameObject stone = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                stone.transform.parent = pyramidParent.transform;
-                stone.transform.position = new Vector3(col + 0.45f, 1.45f, row + 0.45f);
-                stone.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                stone.GetComponent<Renderer>().material.color = color;
-            }
+                for (int col = 0; col < i + 1; col++)
+                {
+                    GameObject stone = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    stone.transform.parent = pyramidParent.transform;
+                    stone.transform.position = new Vector3(col + 1.8f - (0.45f * i), 4.45f - i, row + 1.8f - (0.45f * i));
+                    stone.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+                    stone.GetComponent<Renderer>().material.color = color;
+                }
 
-        }
-        color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        // Third level
-        for (int row = 0; row < 3; row++)
-        {
-            for (int col = 0; col < 3; col++)
-            {
-                GameObject stone = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                stone.transform.parent = pyramidParent.transform;
-                stone.transform.position = new Vector3(col + 0.9f, 2.45f, row + 0.9f);
-                stone.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                stone.GetComponent<Renderer>().material.color = color;
             }
-
         }
-        color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        // Fourth level
-        for (int row = 0; row < 2; row++)
-        {
-            for (int col = 0; col < 2; col++)
-            {
-                GameObject stone = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                stone.transform.parent = pyramidParent.transform;
-                stone.transform.position = new Vector3(col + 1.35f, 3.45f, row + 1.35f);
-                stone.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-                stone.GetComponent<Renderer>().material.color = color;
-            }
-
-        }
-        color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        // Last cube
-        GameObject topStone = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        topStone.transform.parent = pyramidParent.transform;
-        topStone.transform.position = new Vector3(1.8f, 4.45f, 1.85f);
-        topStone.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
-        topStone.GetComponent<Renderer>().material.color = color;
     }
 }
